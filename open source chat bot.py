@@ -1,5 +1,4 @@
-# First, you need to install the required libraries.
-# !pip install -U transformers accelerate bitsandbytes torch
+# First you need to install the required libraries
 
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
@@ -7,11 +6,10 @@ from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 
 model_id = "google/gemma-3-270m"
 
-# Load the tokenizer
+# Loads the tokenizer
 tokenizer = AutoTokenizer.from_pretrained(model_id)
 
-# Load the model with quantization for reduced memory usage.
-# This can be helpful if you have a GPU with limited VRAM.
+# Loads the model with quantization for reduced memory usage
 quantization_config = BitsAndBytesConfig(load_in_4bit=True)
 model = AutoModelForCausalLM.from_pretrained(
     model_id,
@@ -20,14 +18,14 @@ model = AutoModelForCausalLM.from_pretrained(
     torch_dtype=torch.bfloat16
 )
 
-# Define the prompt for the LLM.
-prompt = "Write a short poem about the night sky."
+# in this part we can input the prompt for the LLM
+prompt = input("enter your prompt here: ")
 
-# Tokenize the input text.
+# tokenizes the input text
 input_ids = tokenizer(prompt, return_tensors="pt").to("cuda")
 
-# Generate a response from the model.
-# The `max_new_tokens` parameter controls the length of the generated output.
+# Generate a response from the model
+# the max_new_tokens parameter controls the length of the generated output you can adjust it if you want
 outputs = model.generate(
     **input_ids,
     max_new_tokens=200,
@@ -37,8 +35,8 @@ outputs = model.generate(
     top_p=0.95
 )
 
-# Decode the generated output to a human-readable string.
+# decode the generated output to a human readable string
 generated_text = tokenizer.decode(outputs[0], skip_special_tokens=True)
 
-# Print the result.
+# prints the result
 print(generated_text)
