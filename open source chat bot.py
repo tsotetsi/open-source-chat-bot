@@ -38,5 +38,5 @@ outputs = model.generate(
 # decode the generated output to a human readable string
 generated_text = tokenizer.decode(outputs[0], skip_special_tokens=True)
 
-# prints the result
+# prints the result.
 print(generated_text)
