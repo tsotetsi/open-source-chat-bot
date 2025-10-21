@@ -12,8 +12,7 @@ getting started:
     3.if you are using vs code you nedd to login to your hugging face account through the terminal (cli).
     4.you need to enter you access token.
 
-
-if you are facing any issues please report so it can help improve our chat bot.
+if you are facing any issues please report so it can help improve our chat bot.or if you face any issues then please ask chatgpt or gemini and please dont report any silly things like why should we use this, because thsi is just a project for fun.
 
 updates to v2:
 1. insted of needing to modify the prompt again and again we have modified it so you can prompt to terminal.
