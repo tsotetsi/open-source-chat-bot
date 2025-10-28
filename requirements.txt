@@ -1,0 +1,5 @@
+# Core #
+accelerate==1.11.0
+bitsandbytes==0.48.1
+torch
+transformers
